@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ReplyGym.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ReplyGym"
+    Title="ReplyGym"
+    FlyoutBehavior="Flyout"
+    FlyoutBackgroundColor="Green">
+
+    <Shell.FlyoutHeader>
+        <Border BackgroundColor="DarkGreen" StrokeThickness="5" Stroke="Green">
+            <Grid
+                ColumnDefinitions=".2*,.8*" ColumnSpacing="10"
+                Padding="25" BackgroundColor="White">
+                <Image
+                    Source="reply_logo.png" Aspect="AspectFill"
+                    Grid.Column="0" HorizontalOptions="Center"/>
+
+                <Label 
+                    Text="Reply Gym" Grid.Column="1"
+                    FontSize="35" TextColor="Black" 
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </Border>
+    </Shell.FlyoutHeader>
+
+    <!--Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="50,*" Padding="10" RowDefinitions="30">
+                <Image Source="{Binding Icon}" Grid.Column="0"/>
+                <Label Text="{Binding Title}" TextColor="Black" FontSize="Large" Grid.Column="1"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate-->
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Route="ParentRoute">
+        <ShellContent
+            Title="Home"
+            Icon="home_white.png"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage">
+        </ShellContent>
+   
+        <ShellContent
+            Title="Account"
+            Icon="user_white.png"
+            ContentTemplate="{DataTemplate local:AccountPage}"
+            Route="AccountPage" />
+    </FlyoutItem>
+
+</Shell>

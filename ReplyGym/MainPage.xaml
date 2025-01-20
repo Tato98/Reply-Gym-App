@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReplyGym.MainPage">
+
+
+
+    <Grid>
+
+        <Image Aspect="AspectFill" Source="gym_paper.jpg" Opacity=".2"/>
+
+        <ScrollView>
+            <StackLayout Padding="10">
+                <!-- Lista di Picker per i giorni della settimana -->
+                <CollectionView ItemsSource="{Binding Fields}" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                BackgroundColor="White"
+                                BorderColor="Black"
+                                CornerRadius="15"
+                                Padding="10"
+                                HasShadow="True"
+                                Margin="20,15">
+
+                                <StackLayout Padding="10">
+                                    <!-- Etichetta con il giorno -->
+                                    <Label 
+                                        x:Name="Day"
+                                        Text="{Binding Label}"
+                                        FontSize="20"
+                                        FontAttributes="Bold"
+                                        TextColor="Black">
+                                    </Label>
+
+                                    <!-- Picker per selezionare l'opzione -->
+                                    <Picker 
+                                        x:Name="Picker"
+                                        Title="Seleziona attività"
+                                        ItemsSource="{Binding Options}"
+                                        SelectedItem="{Binding SelectedOption}"
+                                        SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Padding="20">
+                    <Button
+                        x:Name="SaveScheduleButton"
+                        Grid.Column="0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="EndAndExpand"
+                        CornerRadius="15"
+                        Text="Save"                        
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        BorderColor="Black"
+                        TextColor="White"
+                        BackgroundColor="Gray"
+                        IsEnabled="False"
+                        Clicked="OnSaveButtonClicked">
+                    </Button>
+
+                    <Button
+                        x:Name="SendButton"
+                        Grid.Column="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        CornerRadius="15"
+                        Text="Send Email"
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        BorderColor="Black"
+                        TextColor="White"
+                        BackgroundColor="Gray"
+                        IsEnabled="False"
+                        Clicked="OnSendButtonClicked">
+                    </Button>
+                </Grid>
+                
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+    
+</ContentPage>

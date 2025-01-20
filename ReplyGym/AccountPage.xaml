@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReplyGym.AccountPage"
+             Title="Account">
+
+    <Grid RowDefinitions=".3*,.7*">
+
+        <Image Aspect="AspectFill" Source="gym.jpg"/>
+
+        <Grid Grid.Row="1">
+            <RoundRectangle Margin="-5,-30,-5,-2"
+                            CornerRadius="35,35,0,0"
+                            Fill="White"/>
+
+            <ScrollView>
+                <VerticalStackLayout Margin="30,0,30,0">
+                    <Label FontAttributes="Bold"
+                       FontFamily="bold"
+                       FontSize="Large"
+                       Text="Welcome!"
+                       TextColor="Black"/>
+
+                    <Label FontFamily="medium"
+                       FontSize="Medium"
+                       Text="Please enter the username and password that you use to access sportrick.com and your personal email."
+                       TextColor="Gray"/>
+
+                    <Grid Margin="0,30,0,0" ColumnSpacing="10" ColumnDefinitions=".1*,.8*">
+
+                        <Image HorizontalOptions="Center"
+                           Aspect="AspectFit"
+                           Source="user.png"
+                           BackgroundColor="White"/>
+
+                        <Entry x:Name="username"
+                           Grid.Column="1"
+                           Keyboard="Email"
+                           Placeholder="Username"
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           TextChanged="OnTextChanged"/>
+
+                    </Grid>
+
+                    <Grid Margin="0,30,0,0" ColumnSpacing="10" ColumnDefinitions=".1*,.8*">
+
+                        <Image HorizontalOptions="Center"
+                           Aspect="AspectFit"
+                           Source="password.png"
+                           BackgroundColor="White"/>
+
+                        <Entry x:Name="password"
+                           Grid.Column="1"
+                           Placeholder="Password"
+                           IsPassword="True"
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           TextChanged="OnTextChanged"/>
+
+                    </Grid>
+
+                    <Grid Margin="0,30,0,0" ColumnSpacing="10" ColumnDefinitions=".1*,.8*">
+
+                        <Image HorizontalOptions="Center"
+                               Aspect="AspectFit"
+                               Source="email.png"
+                               BackgroundColor="White"/>
+
+                        <Entry x:Name="email"
+                               Grid.Column="1"
+                               Keyboard="Email"
+                               Placeholder="Email"
+                               FontSize="Medium"
+                               VerticalOptions="Center"
+                               TextChanged="OnTextChanged"/>
+
+                    </Grid>
+
+                    <Grid Margin="0,30,0,0">
+                        <Button
+                            x:Name="SaveButton"
+                            Text="Save"
+                            FontSize="Large"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="15"
+                            IsEnabled="False"
+                            BackgroundColor="Gray"
+                            Clicked="OnClickedSaveButton">
+                        </Button>
+                    </Grid>
+                
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
+
+</ContentPage>
