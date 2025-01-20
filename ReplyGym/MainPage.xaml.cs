@@ -2,6 +2,7 @@
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Alerts;
 using Microsoft.Maui.Controls;
+using CommunityToolkit.Maui.Views;
 
 namespace ReplyGym
 {
@@ -90,7 +91,7 @@ namespace ReplyGym
             });
         }
 
-        private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        private async void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (var field in Fields)
             {
@@ -104,6 +105,31 @@ namespace ReplyGym
 
                     break;
                 }
+            }
+
+            if ( ((Picker)sender).SelectedItem is (object)"GAG" or (object)"PILATES")
+            {
+                var popupContent = new ContentView
+                {
+                    BackgroundColor = Colors.Black,
+                    Content = new Image
+                    {
+                        Source = "peppe.png",
+                        Aspect = Aspect.AspectFill,
+                        WidthRequest = 200,
+                        HeightRequest = 200,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center
+                    }
+                };
+
+                var popup = new Popup
+                {
+                    Content = popupContent,
+                    CanBeDismissedByTappingOutsideOfPopup = true
+                };
+
+                await this.ShowPopupAsync(popup);
             }
         }
 
