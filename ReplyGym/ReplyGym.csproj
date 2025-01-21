@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0-ios;net9.0-maccatalyst;net9.0-android35.0</TargetFrameworks>
+		<TargetFrameworks>net9.0-ios;net9.0-maccatalyst;net9.0-android</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
@@ -33,27 +33,19 @@
 		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
 		<WindowsPackageType>None</WindowsPackageType>
 
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
-		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<AndroidSigningKeyStore>corra-release-key.jks</AndroidSigningKeyStore>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
-	  <BuildIpa>True</BuildIpa>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
 	  <AndroidPackageFormat>apk</AndroidPackageFormat>
-	  <DebugSymbols>True</DebugSymbols>
+	  <DebugSymbols>False</DebugSymbols>
 	  <AndroidKeyStore>True</AndroidKeyStore>
 	  <AndroidSigningStorePass>tato-110898</AndroidSigningStorePass>
 	  <AndroidSigningKeyAlias>corra-key-alias</AndroidSigningKeyAlias>
 	  <AndroidSigningKeyPass>alias-password</AndroidSigningKeyPass>
 	  <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
+	  <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
+	  <RunAOTCompilation>True</RunAOTCompilation>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
@@ -64,22 +56,7 @@
 	  <AndroidSigningKeyAlias>corra-key-alias</AndroidSigningKeyAlias>
 	  <AndroidSigningKeyPass>alias-password</AndroidSigningKeyPass>
 	  <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android35.0|AnyCPU'">
-	  <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
-	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningStorePass>tato-110898</AndroidSigningStorePass>
-	  <AndroidSigningKeyAlias>corra-key-alias</AndroidSigningKeyAlias>
-	  <AndroidSigningKeyPass>alias-password</AndroidSigningKeyPass>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android35.0|AnyCPU'">
-	  <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
-	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningStorePass>tato-110898</AndroidSigningStorePass>
-	  <AndroidSigningKeyAlias>corra-key-alias</AndroidSigningKeyAlias>
-	  <AndroidSigningKeyPass>alias-password</AndroidSigningKeyPass>
+	  <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -117,6 +94,10 @@
 	  <MauiXaml Update="AccountPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Runtime.MonoAOTCompiler.Task" Version="6.0.100" />
 	</ItemGroup>
 
 </Project>
