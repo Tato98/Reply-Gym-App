@@ -55,6 +55,8 @@
 	  <DebugSymbols>True</DebugSymbols>
 	  <AndroidKeyStore>True</AndroidKeyStore>
 	  <AndroidSigningStorePass>tato-110898</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>corra-key-alias</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>alias-password</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
@@ -62,6 +64,8 @@
 	  <RunAOTCompilation>True</RunAOTCompilation>
 	  <AndroidEnableProfiledAot>True</AndroidEnableProfiledAot>
 	  <AndroidSigningStorePass>tato-110898</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>corra-key-alias</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>alias-password</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<ItemGroup>
