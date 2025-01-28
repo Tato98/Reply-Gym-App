@@ -6,7 +6,7 @@
 
     <Grid RowDefinitions=".3*,.7*">
 
-        <Image Aspect="AspectFill" Source="gym.jpg"/>
+        <Image Grid.Row="0" Aspect="AspectFill" Source="gym.jpg"/>
 
         <Grid Grid.Row="1">
             <RoundRectangle Margin="-5,-30,-5,-2"
@@ -14,7 +14,7 @@
                             Fill="White"/>
 
             <ScrollView>
-                <VerticalStackLayout Margin="30,0,30,0">
+                <VerticalStackLayout Padding="30">
                     <Label FontAttributes="Bold"
                        FontFamily="bold"
                        FontSize="Large"
@@ -85,6 +85,7 @@
                             FontAttributes="Bold"
                             TextColor="White"
                             HorizontalOptions="FillAndExpand"
+                            VerticalOptions="EndAndExpand"
                             CornerRadius="15"
                             IsEnabled="False"
                             BackgroundColor="Gray"

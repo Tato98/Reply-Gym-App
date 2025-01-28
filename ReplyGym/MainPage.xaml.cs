@@ -107,29 +107,32 @@ namespace ReplyGym
                 }
             }
 
-            if ( ((Picker)sender).SelectedItem is (object)"GAG" or (object)"PILATES")
+            if (DeviceInfo.Platform == DevicePlatform.iOS || DeviceInfo.Platform == DevicePlatform.Android)
             {
-                var popupContent = new ContentView
+                if (((Picker)sender).SelectedItem is (object)"GAG" or (object)"PILATES")
                 {
-                    BackgroundColor = Colors.Black,
-                    Content = new Image
+                    var popupContent = new ContentView
                     {
-                        Source = "peppe.png",
-                        Aspect = Aspect.AspectFill,
-                        WidthRequest = 200,
-                        HeightRequest = 200,
-                        HorizontalOptions = LayoutOptions.Center,
-                        VerticalOptions = LayoutOptions.Center
-                    }
-                };
+                        BackgroundColor = Colors.Black,
+                        Content = new Image
+                        {
+                            Source = "peppe.png",
+                            Aspect = Aspect.AspectFill,
+                            WidthRequest = 200,
+                            HeightRequest = 200,
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.Center
+                        }
+                    };
 
-                var popup = new Popup
-                {
-                    Content = popupContent,
-                    CanBeDismissedByTappingOutsideOfPopup = true
-                };
+                    var popup = new Popup
+                    {
+                        Content = popupContent,
+                        CanBeDismissedByTappingOutsideOfPopup = true
+                    };
 
-                await this.ShowPopupAsync(popup);
+                    await this.ShowPopupAsync(popup);
+                }
             }
         }
 
@@ -182,8 +185,11 @@ namespace ReplyGym
             // Aprire il client di posta elettronica
             await Launcher.OpenAsync(mailtoUri);
 
-            var toast = Toast.Make("Email is ready to be sent", ToastDuration.Long);
-            await toast.Show();
+            if (DeviceInfo.Platform == DevicePlatform.iOS || DeviceInfo.Platform == DevicePlatform.Android)
+            {
+                var toast = Toast.Make("Email is ready to be sent", ToastDuration.Long);
+                await toast.Show();
+            }
         }
         
     }

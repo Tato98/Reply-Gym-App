@@ -3,8 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ReplyGym.MainPage">
 
-
-
     <Grid>
 
         <Image Aspect="AspectFill" Source="gym_paper.jpg" Opacity=".2"/>
